@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Developer Portfolio</title>
+
+    <!-- ================== CSS ================== -->
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        /* ================== HERO ================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to right, #1e3a8a, #2563eb);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .hero p {
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+
+        .btn-group {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ================== SKILLS ================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .skill {
+            margin-bottom: 12px;
+        }
+
+        .skill span {
+            font-size: 0.9rem;
+        }
+
+        .progress {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress div {
+            height: 100%;
+            background: var(--primary);
+        }
+
+        /* ================== PROJECTS ================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+
+        .project-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* ================== EXPERIENCE ================== */
+        .timeline {
+            display: grid;
+            gap: 25px;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+        }
+
+        .timeline-item ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        /* ================== CONTACT ================== */
+        form {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #cbd5f5;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        .social {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social a {
+            margin: 0 10px;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================== HERO ================== -->
+<section class="hero" id="home">
+    <div>
+        <h1>John Doe</h1>
+        <p>Full-Stack Software Developer</p>
+        <p>Building scalable, user-friendly web applications</p>
+        <div class="btn-group">
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </div>
+</section>
+
+<!-- ================== SKILLS ================== -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <h3>Frontend</h3>
+            <div class="skill"><span>HTML</span><div class="progress"><div style="width:90%"></div></div></div>
+            <div class="skill"><span>CSS</span><div class="progress"><div style="width:85%"></div></div></div>
+            <div class="skill"><span>JavaScript</span><div class="progress"><div style="width:80%"></div></div></div>
+        </div>
+
+        <div class="skill-card">
+            <h3>Backend</h3>
+            <div class="skill"><span>Node.js</span><div class="progress"><div style="width:75%"></div></div></div>
+            <div class="skill"><span>Python</span><div class="progress"><div style="width:70%"></div></div></div>
+            <div class="skill"><span>Java</span><div class="progress"><div style="width:65%"></div></div></div>
+        </div>
+
+        <div class="skill-card">
+            <h3>Databases</h3>
+            <div class="skill"><span>MySQL</span><div class="progress"><div style="width:80%"></div></div></div>
+            <div class="skill"><span>MongoDB</span><div class="progress"><div style="width:70%"></div></div></div>
+            <div class="skill"><span>PostgreSQL</span><div class="progress"><div style="width:65%"></div></div></div>
+        </div>
+
+        <div class="skill-card">
+            <h3>Tools & DevOps</h3>
+            <div class="skill"><span>Git</span><div class="progress"><div style="width:85%"></div></div></div>
+            <div class="skill"><span>Docker</span><div class="progress"><div style="width:60%"></div></div></div>
+            <div class="skill"><span>CI/CD</span><div class="progress"><div style="width:55%"></div></div></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================== PROJECTS ================== -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>Personal responsive portfolio showcasing skills and projects.</p>
+            <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+            <div class="project-links">
+                <a href="#">GitHub</a>
+                <a href="#">Live Demo</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Task Manager App</h3>
+            <p>Web app to manage daily tasks with CRUD operations.</p>
+            <p><strong>Tech:</strong> JavaScript, Node.js</p>
+            <div class="project-links">
+                <a href="#">GitHub</a>
+                <a href="#">Live Demo</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Expense Tracker</h3>
+            <p>Tracks income and expenses with charts.</p>
+            <p><strong>Tech:</strong> JavaScript, MySQL</p>
+            <div class="project-links">
+                <a href="#">GitHub</a>
+                <a href="#">Live Demo</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================== EXPERIENCE ================== -->
+<section id="experience">
+    <h2>Experience & Education</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Software Developer</h3>
+            <p>ABC Technologies | 2022 – Present</p>
+            <ul>
+                <li>Developed responsive web applications</li>
+                <li>Collaborated with cross-functional teams</li>
+                <li>Improved application performance</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Bachelor of Computer Science</h3>
+            <p>XYZ University | 2018 – 2022</p>
+            <ul>
+                <li>Strong foundation in programming</li>
+                <li>Database and web development projects</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================== CONTACT ================== -->
+<section id="contact">
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div class="social">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="mailto:example@email.com">Email</a>
+    </div>
+</section>
+
+<footer>
+    © 2026 John Doe. All rights reserved.
+</footer>
+
+<!-- ================== JAVASCRIPT ================== -->
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !message) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!email.match(emailPattern)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        alert("Message sent successfully!");
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
